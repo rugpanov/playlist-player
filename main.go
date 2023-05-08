@@ -6,6 +6,7 @@ import (
 	"go-playlist-player/types"
 	"go-playlist-player/types/commands"
 	"go-playlist-player/types/state"
+	"go-playlist-player/utils"
 	"log"
 	"net/http"
 	"os"
@@ -47,7 +48,7 @@ func handlePrev(w http.ResponseWriter, _ *http.Request) {
 }
 
 func upload(w http.ResponseWriter, r *http.Request) {
-	path, err := UploadFile(w, r)
+	path, err := utils.UploadFile(w, r)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		_, err := w.Write([]byte("500 - " + err.Error()))
@@ -116,12 +117,12 @@ func addAllFilesFromDir(path string) {
 	}
 
 	if len(files) == 0 {
-		err := DownloadFile("music/Cease Fire.mp3", "https://legismusic.s3.amazonaws.com/epic/Cease+Fire.mp3")
+		err := utils.DownloadFile("music/Cease Fire.mp3", "https://legismusic.s3.amazonaws.com/epic/Cease+Fire.mp3")
 		if err != nil {
 			log.Fatal(err)
 			return
 		}
-		err = DownloadFile("music/Bloody.mp3", "https://legismusic.s3.amazonaws.com/epic/Bloody.mp3")
+		err = utils.DownloadFile("music/Bloody.mp3", "https://legismusic.s3.amazonaws.com/epic/Bloody.mp3")
 		if err != nil {
 			log.Fatal(err)
 			return
