@@ -18,10 +18,10 @@ func handleRequests() {
 	uploadPage := http.FileServer(http.Dir("./static"))
 
 	http.Handle("/", uploadPage)
-	http.HandleFunc("/play", handlePlay)
-	http.HandleFunc("/pause", handlePause)
-	http.HandleFunc("/next", handleNext)
-	http.HandleFunc("/prev", handlePrev)
+	http.HandleFunc("/player/play", handlePlay)
+	http.HandleFunc("/player/pause", handlePause)
+	http.HandleFunc("/player/next", handleNext)
+	http.HandleFunc("/player/prev", handlePrev)
 	http.HandleFunc("/playlist/upload", upload)
 	log.Fatal(http.ListenAndServe("localhost:8080", nil))
 }

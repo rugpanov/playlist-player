@@ -26,25 +26,25 @@
 <script>
     function play() {
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "/play");
+        xhr.open("GET", "/player/play");
         xhr.send();
     }
 
     function pause() {
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "/pause");
+        xhr.open("GET", "/player/pause");
         xhr.send();
     }
 
     function nextSong() {
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "/next");
+        xhr.open("GET", "/player/next");
         xhr.send();
     }
 
     function prevSong() {
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "/prev");
+        xhr.open("GET", "/player/prev");
         xhr.send();
     }
 
