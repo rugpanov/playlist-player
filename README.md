@@ -1,4 +1,5 @@
 # Go Playlist Player
+[![Go](https://github.com/rugpanov/playlist-player/actions/workflows/go.yml/badge.svg)](https://github.com/rugpanov/playlist-player/actions/workflows/go.yml)
 
 This module provides a way to manage a playlist with the following endpoints:
 
