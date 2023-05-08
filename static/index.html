@@ -1,0 +1,76 @@
+<!-- A lot of ChatGPT magic-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Playlist Player</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="button-wrapper">
+    <button id="prev-song" onclick="prevSong()">
+        ⏮️
+    </button>
+    <button id="play" onclick="play()">
+        ▶️
+    </button>
+    <button id="pause" onclick="pause()">
+        ⏸️
+    </button>
+    <button id="next-song" onclick="nextSong()">
+        ⏭️
+    </button>
+    <button onclick="upload()">☁️</button>
+</div>
+
+<script>
+    function play() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/play");
+        xhr.send();
+    }
+
+    function pause() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/pause");
+        xhr.send();
+    }
+
+    function nextSong() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/next");
+        xhr.send();
+    }
+
+    function prevSong() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/prev");
+        xhr.send();
+    }
+
+    function upload() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.mp3,audio/*';
+        input.onchange = () => {
+            const file = input.files[0];
+            const formData = new FormData();
+            formData.append('myFile', file);
+            fetch('/playlist/upload', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => {
+                    console.log('File upload response:', response);
+                    alert('File uploaded successfully!');
+                })
+                .catch(error => {
+                    console.error('File upload error:', error);
+                    alert('File upload failed. Please try again.');
+                });
+        };
+        input.click();
+    }
+</script>
+</body>
+</html>
