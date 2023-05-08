@@ -29,3 +29,6 @@ This module provides a way to manage a playlist with the following endpoints:
 ```shell
 go run .
 ```
+
+## Music
+Music is provided by [Legis Music](https://legismusic.com/).
